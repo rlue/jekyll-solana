@@ -25,9 +25,9 @@
     <title>{{ title }}</title>
     <meta name="author"       content="{{ site.author }}" />
     <meta name="description"  content="{{ teaser }}" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" />
     {% feed_meta %}
-    <link rel="stylesheet"    href="/style.css">
+    <link rel="stylesheet"    href="{{ site.baseurl }}/style.css">
     <link rel="stylesheet"    href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:500,500i,300,300i|Roboto+Mono">
   </head>
   <body>
@@ -48,9 +48,10 @@
                 {% assign obfuscated_link = plain_link | url_encode | split: '' | reverse | join: '' %}
                 <a class="nav__item nav__item--{{ item.name | downcase }}" href="{{ obfuscated_link }}">{{ item.name }}</a>
               {% else %}
-                {% assign url = item.url %}
                 {% if item.outbound %}
-                  {% assign url = url | append: '" target=_blank' %}
+                  {% assign url = item.url | append: '" target=_blank' %}
+                {% else %}
+                  {% assign url = item.url | prepend: site.baseurl %}
                 {% endif %}
                 <a class="nav__item nav__item--{{ item.name | downcase }}" href="{{ url }}">{{ item.name }}</a>
               {% endif %}
@@ -70,6 +71,6 @@
       </footer>
     </div>
 
-    <script src="/site.js"></script>
+    <script src="{{ site.baseurl }}/site.js"></script>
   </body>
 </html>

@@ -237,7 +237,7 @@
     margin: 2rem;
     right: 0;
     top: 0;
-    @include bgicon($image: url("/i/icons.svg#hamburger"), $position: center, $color: transparent);
+    @include bgicon($image: url("{{ site.baseurl }}/i/icons.svg#hamburger"), $position: center, $color: transparent);
   }
 
   @include tablet-landscape-up {
@@ -323,7 +323,7 @@
     pointer-events: auto;
 
     {% for item in site.nav_menu %}
-      &--{{ item.name | downcase }} { background-image: url("{{ item.icon }}"); }
+      &--{{ item.name | downcase }} { background-image: url("{{ site.baseurl }}{{ item.icon }}"); }
     {% endfor %}
 
     &, &:link, &:visited, &:hover {
@@ -515,7 +515,7 @@
     margin: auto;
     margin-top: 0.5rem;
     padding-right: 1.75rem;
-    @include bgicon($image: url("/i/icons.svg#category_purple"), $position: right 0.375rem center, $size: 1rem);
+    @include bgicon($image: url("{{ site.baseurl }}/i/icons.svg#category_purple"), $position: right 0.375rem center, $size: 1rem);
     @include fontweight(bold, sans-serif, $button_category);
   }
 
@@ -628,13 +628,13 @@
     padding-left: 2rem;
   }
   .post__category {
-    @include bgicon($image: url("/i/icons.svg#category_white"), $position: 0.375rem center, $size: 1rem, $color: $button_category);
-    @include hoverbutton($button_category, $icon: url("/i/icons.svg#category_purple"));
+    @include bgicon($image: url("{{ site.baseurl }}/i/icons.svg#category_white"), $position: 0.375rem center, $size: 1rem, $color: $button_category);
+    @include hoverbutton($button_category, $icon: url("{{ site.baseurl }}/i/icons.svg#category_purple"));
   }
 
   .post__tag {
-    @include bgicon($image: url("/i/icons.svg#tag_white"), $position: 0.375rem center, $size: 1rem, $color: $button_tag);
-    @include hoverbutton($button_tag, $icon: url("/i/icons.svg#tag_pink"));
+    @include bgicon($image: url("{{ site.baseurl }}/i/icons.svg#tag_white"), $position: 0.375rem center, $size: 1rem, $color: $button_tag);
+    @include hoverbutton($button_tag, $icon: url("{{ site.baseurl }}/i/icons.svg#tag_pink"));
   }
 
 }
@@ -663,8 +663,8 @@
   margin: 1rem 0;
   padding: 0.5rem;
   padding-left: 2.6rem;
-  @include bgicon($image: url("/i/icons.svg#snoo_white"), $size: 2rem, $position: 0.375rem center, $color: $button_comment);
-  @include hoverbutton($button_comment, $icon: url("/i/icons.svg#snoo_orange"));
+  @include bgicon($image: url("{{ site.baseurl }}/i/icons.svg#snoo_white"), $size: 2rem, $position: 0.375rem center, $color: $button_comment);
+  @include hoverbutton($button_comment, $icon: url("{{ site.baseurl }}/i/icons.svg#snoo_orange"));
   font-size: 1.2rem;
   line-height: 2;
 }

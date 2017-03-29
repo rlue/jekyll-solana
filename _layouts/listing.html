@@ -39,7 +39,7 @@ layout: default
         {% elsif item_type == 'projects' %}
           <span class="projects__entry-role">{{ item.role }}</span>
         {% endif %}
-        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ item.url }}"{{ outbound_link_flag }}>{{ item.title }}</a>
+        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.url }}"{{ outbound_link_flag }}>{{ item.title }}</a>
         {% if item.teaser %} <div class="{{ item_type }}__entry-teaser {{ item_type }}__entry-teaser--{{ page_type }}">{{ item.teaser }}</div> {% endif %}
         </div>
         {% if item.category %} <div class="{{ item_type }}__entry-category {{ item_type }}__entry-category--{{ page_type }}">{{ item.category }}</div> {% endif %}
