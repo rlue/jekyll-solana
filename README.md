@@ -87,7 +87,7 @@ As a static site generator, Jekyll has no means to provide a commenting system. 
 2. Post it to Reddit.
 3. Include the resulting Reddit URL in the post’s YAML frontmatter:
 
-        reddit_post: 'https://www.reddit.com/r/programming/comments/43qrr1/github_pages_now_faster_and_simpler_with_jekyll_30/'
+        reddit_post: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/'
 
    Now, a link to the Reddit discussion will appear at the end of the post content, before the footnotes (if any).
 
@@ -95,7 +95,7 @@ As a static site generator, Jekyll has no means to provide a commenting system. 
 4. If the post receives noteworthy comments that you would like to embed directly on the page, add their permalinks to the YAML frontmatter as well:
 
         featured_comments:
-          - url: https://www.reddit.com/r/programming/comments/43qrr1/github_pages_now_faster_and_simpler_with_jekyll_30/czkidt9/
+          - url: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/dfjtxba/'
             context: false
             freeze: false
 

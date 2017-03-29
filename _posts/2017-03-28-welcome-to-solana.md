@@ -3,7 +3,9 @@ title: Welcome to Solana
 teaser: These sample posts are provided as a template for creating your own content.
 category: intro
 tags: [markdown, workflow, foss]
-reddit_post: 'https://www.reddit.com/r/programming/comments/43qrr1/github_pages_now_faster_and_simpler_with_jekyll_30/'
+reddit_post: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/'
+featured_comments:
+  - url: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/dfjtxba/'
 ---
 
 GitHub Pages uses a Markdown engine called <dfn>kramdown</dfn> for formatting text posts:
@@ -16,7 +18,10 @@ GitHub Pages uses a Markdown engine called <dfn>kramdown</dfn> for formatting te
 > the Markdown setting to `kramdown` in your site’s configuration (or removing
 > it entirely) over the course of the next three months.
 
-kramdown is a superset of Markdown, meaning 1) anything that’s valid Markdown is also valid kramdown, and 2) it provides and strictly specifies a number of features that are not available in Markdown.[^1] 
+kramdown is a superset of Markdown, meaning:
+
+1. anything that’s valid Markdown is also valid kramdown, and
+2. it provides and strictly specifies a number of features that are not available in Markdown.[^1] 
 
 Consult the official [kramdown syntax reference][kds] for an exhaustive list of features and how to use them.
 
