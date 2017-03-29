@@ -3,8 +3,6 @@ Solana – a Wholesome, Flat, Sunshiny Jekyll Theme
 
 **Solana** is a theme for the [Jekyll][jk] static site generator. 
 
-<img src="https://raw.githubusercontent.com/rlue/i/master/solana/responsive.gif" style="float: right">
-
 ### Features
 
 * Compatible with GitHub Pages
@@ -13,6 +11,8 @@ Solana – a Wholesome, Flat, Sunshiny Jekyll Theme
 * Lightweight (no jQuery, Bootstrap, etc.) 
 * Obfuscates email addresses for protection against email harvesting bots
 * Comments via outbound links to Reddit
+
+![](https://raw.githubusercontent.com/rlue/i/master/solana/responsive.gif)
 
 ![](https://raw.githubusercontent.com/rlue/i/master/solana/device_mockup.png)
 
