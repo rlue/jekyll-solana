@@ -4,8 +4,9 @@
 
 title: J. Bravo          # appears in the header and the HTML <title> tag
 author: Johnny Bravo     # appears in an HTML <meta> tag, as well as feed.xml
-description: I'm pretty, you're pretty – whaddya say we go home and stare at each other?
-                         # appears in an HTML <meta> tag, as well as feed.xml
+description: >           # appears in an HTML <meta> tag, as well as feed.xml
+  Hello 911 emergency, there's a handsome guy in my house!
+  Oh wait a second, cancel that. It's only me.
 slogan: Showtime!        # appears in the header, alongside the title
 avatar: /i/avatar.png    # appears as portrait in the header
 banner: /i/mountains.svg # appears as background in the header
