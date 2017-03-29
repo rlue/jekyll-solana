@@ -14,7 +14,7 @@ layout: default
     <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}"> {{ pretty_date }} </time>
     <div class="post__labels">
     {% if page.category %} <a href="{{ site.baseurl }}/category/{{ page.category }}" class="post__category">{{ page.category }}</a>{% endif %}
-    {% if page.tags %}{% for tag in page.tags %} <a href="/tag/{{ tag }}" class="post__tag">{{ tag }}</a>{% endfor %}{% endif %}
+    {% if page.tags %}{% for tag in page.tags %} <a href="{{ site.baseurl }}/tag/{{ tag }}" class="post__tag">{{ tag }}</a>{% endfor %}{% endif %}
     </div>
   </div>
   <div class="post__body">
