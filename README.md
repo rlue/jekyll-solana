@@ -24,7 +24,7 @@ Installation
 1. Prepare a [new GitHub repository][new] named after your GitHub Pages address (`<username>.github.io`). Do not initialize with a `README`, `.gitignore`, or license.
 2. Clone this repository:
 
-        $ git clone https://github.com/rlue/solana.git
+        $ git clone https://github.com/rlue/jekyll-solana.git
 
 3. Associate your local copy with the GitHub Pages repo you just created:
 
