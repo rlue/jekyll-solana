@@ -96,10 +96,12 @@ As a static site generator, Jekyll has no means to provide a commenting system. 
 
         featured_comments:
           - url: https://www.reddit.com/r/programming/comments/43qrr1/github_pages_now_faster_and_simpler_with_jekyll_30/czkidt9/
-            context: 'false'
-            freeze: 'false'
+            context: false
+            freeze: false
 
    The `context` flag tells the embed script to include the target comment’s parent. The `freeze` flag prevents live updating in the event that a comment is edited after the fact. Both default to `false`.
+
+   ![](https://raw.githubusercontent.com/rlue/i/master/solana/comments-2.png)
 
 Modifying
 ---------
