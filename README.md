@@ -1,7 +1,7 @@
 Solana – a Wholesome, Flat, Sunshiny Jekyll Theme
 ===============================================
 
-**Solana** is a theme for the [Jekyll][jk] static site generator. 
+**Solana** is a theme for the [Jekyll][jk] static site generator. [View the demo][demo].
 
 ### Features
 
@@ -26,9 +26,13 @@ Installation
 
         $ git clone https://github.com/rlue/jekyll-solana.git
 
-3. Associate your local copy with the GitHub Pages repo you just created:
+3. Delete the `baseurl` site variable from `_config.yml`.
 
         $ cd solana
+        $ sed -i '' '/baseurl/d' test.txt
+
+4. Associate your local copy with the GitHub Pages repo you just created:
+
         $ git remote rm origin
         $ git remote add origin https://github.com/<username>/<username>.github.io
         $ git push -u origin master
@@ -116,6 +120,7 @@ License
 © 2017 Ryan Lue. This project is licensed under the terms of the MIT license.
 
 [jk]: http://jekyllrb.com/
+[demo]: http://ryanlue.com/jekyll-solana
 [new]: https://github.com/new
 [bun]: https://github.com/bundler/bundler#installation-and-usage
 [doc-fm]: https://jekyllrb.com/docs/frontmatter/
