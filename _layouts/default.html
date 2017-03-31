@@ -46,7 +46,7 @@
               {% if item.scheme == 'mailto' %}
                 {% assign plain_link = 'mailto:' | append: item.handle | append: '@' | append: item.domain %}
                 {% assign obfuscated_link = plain_link | url_encode | split: '' | reverse | join: '' %}
-                <a class="nav__item nav__item--{{ item.name | downcase }}" href="{{ obfuscated_link }}">{{ item.name }}</a>
+                <a class="nav__item nav__item--{{ item.name | downcase }} email" href="{{ obfuscated_link }}">{{ item.name }}</a>
               {% else %}
                 {% if item.outbound %}
                   {% assign url = item.url | append: '" target=_blank' %}

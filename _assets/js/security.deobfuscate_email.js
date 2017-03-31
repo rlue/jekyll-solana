@@ -9,9 +9,11 @@ Contact.deobfuscateLink = function(element) {
     return deobfuscation;
 }
 
-Contact.patchButton = function(klass) {
-    var element = document.getElementsByClassName(klass)[0];
-    element.href = Contact.deobfuscateLink(element);
+Contact.patchButtons = function(klass) {
+    var elements = document.getElementsByClassName(klass);
+    for (i = 0; i < elements.length; i++) {
+        elements[i].href = Contact.deobfuscateLink(elements[i]);
+    }
 }
 
-Contact.patchButton('nav__item--contact');
+Contact.patchButtons('email');
