@@ -26,15 +26,19 @@ Installation
 
         $ git clone https://github.com/rlue/jekyll-solana.git
 
-3. Delete the `baseurl` site variable from `_config.yml`.
+3. Associate your local copy with the GitHub Pages repo you just created:
 
         $ cd solana
-        $ sed -i '' '/baseurl/d' _config.yml
-
-4. Associate your local copy with the GitHub Pages repo you just created:
-
         $ git remote rm origin
         $ git remote add origin https://github.com/<username>/<username>.github.io
+
+4. In `_config.yml`, replace the `baseurl` site variable (`/jekyll-solana`) with an empty string (`''`):
+
+        $ sed -i "s/\/jekyll-solana/''            /" _config.yml     # on UNIX
+        $ sed -i '' "s/\/jekyll-solana/''            /" _config.yml  # on Mac
+
+5. And push:
+
         $ git push -u origin master
 
 In just a few minutes, your site should be live at https://\<username\>.github.io/!
