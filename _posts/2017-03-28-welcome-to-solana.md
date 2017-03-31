@@ -8,17 +8,7 @@ featured_comments:
   - url: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/dfjtxba/'
 ---
 
-GitHub Pages uses a Markdown engine called <dfn>kramdown</dfn> for formatting text posts:
-
-> **Starting May 1st, 2016, GitHub Pages will only support [kramdown][kd],
-> Jekyll’s default Markdown engine.** If you are currently using [Rdiscount][rd]
-> or [Redcarpet][rc] we’ve enabled kramdown’s GitHub-flavored Markdown support
-> by default, meaning kramdown should have all the features of the two
-> deprecated Markdown engines, so the transition should be as simple as updating
-> the Markdown setting to `kramdown` in your site’s configuration (or removing
-> it entirely) over the course of the next three months.
-
-kramdown is a superset of Markdown, meaning:
+GitHub Pages uses a Markdown engine called <dfn>kramdown</dfn> for formatting text posts. kramdown is a superset of Markdown, meaning:
 
 1. anything that’s valid Markdown is also valid kramdown, and
 2. it provides and strictly specifies a number of features that are not available in Markdown.[^1] 
