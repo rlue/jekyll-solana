@@ -29,7 +29,7 @@ Installation
 3. Delete the `baseurl` site variable from `_config.yml`.
 
         $ cd solana
-        $ sed -i '' '/baseurl/d' test.txt
+        $ sed -i '' '/baseurl/d' _config.yml
 
 4. Associate your local copy with the GitHub Pages repo you just created:
 
