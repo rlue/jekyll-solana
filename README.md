@@ -124,7 +124,7 @@ License
 © 2017 Ryan Lue. This project is licensed under the terms of the MIT license.
 
 [jk]: http://jekyllrb.com/
-[demo]: http://ryanlue.com/jekyll-solana
+[demo]: https://solana.ryanlue.com/
 [new]: https://github.com/new
 [bun]: https://github.com/bundler/bundler#installation-and-usage
 [doc-fm]: https://jekyllrb.com/docs/frontmatter/
