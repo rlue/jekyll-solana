@@ -37,7 +37,7 @@ nav_menu:
 projects:
   - title: Solana
     teaser: A responsive blog template written in Sass and vanilla JavaScript.
-    url: https://github.com/rlue/solana
+    url: https://github.com/rlue/jekyll-solana
     role: Creator
     category: Frontend Dev
   - title: Cortana
