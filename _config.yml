@@ -80,7 +80,7 @@ defaults:
 sass:
   sass_dir: _assets/css
 
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
