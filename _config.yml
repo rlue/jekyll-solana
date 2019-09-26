@@ -30,7 +30,7 @@ nav_menu:
     scheme: mailto      # these keys enable email obfuscation.
     handle: hello       # you know, to protect you from bots. (handle and domain
     domain: github.com  # are separated in case bots crawl GitHub repos, too.)
-    icon: /i/icons.svg#email
+    icon: /i/icons.svg#face
 
 # Objects listed here will appear on the /projects.html page.
 #projects:
