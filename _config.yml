@@ -27,7 +27,7 @@ nav_menu:
     icon: /i/icons.svg#github
     outbound: true      # this key sets a link to open in a new window.
   - name: About
-     url: /about
+    url: /about
 #    scheme: mailto      # these keys enable email obfuscation.
 #    handle: hello       # you know, to protect you from bots. (handle and domain
 #    domain: github.com  # are separated in case bots crawl GitHub repos, too.)
