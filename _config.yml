@@ -19,9 +19,9 @@ nav_menu:
   - name: Posts
     url: /
     icon: /i/icons.svg#posts # icons should be 24x24 px.
-  - name: Projects
-    url: /projects
-    icon: /i/icons.svg#portfolio
+#  - name: Projects
+#    url: /projects
+#    icon: /i/icons.svg#portfolio
   - name: GitHub
     url: https://github.com/loki-pup
     icon: /i/icons.svg#github
@@ -33,22 +33,22 @@ nav_menu:
     icon: /i/icons.svg#email
 
 # Objects listed here will appear on the /projects.html page.
-projects:
-  - title: Solana
-    teaser: A responsive blog template written in Sass and vanilla JavaScript.
-    url: https://github.com/rlue/jekyll-solana
-    role: Creator
-    category: Frontend Dev
-  - title: Cortana
-    teaser: A talking robot. Now available on Google Play?
-    url: https://play.google.com/store/apps/details?id=com.microsoft.cortana
-    role: Core Team
-    category: NLP
-  - title: Rihanna
-    teaser: Possibly another robot. Also available on Google Play.
-    url: https://play.google.com/store/music/artist/Rihanna?id=Arcw2m2ih45qntv3fufub25tyhu
-    role: Contributor
-    category: Algorithmic Composition
+#projects:
+ # - title: Solana
+ #  teaser: A responsive blog template written in Sass and vanilla JavaScript.
+ #   url: https://github.com/rlue/jekyll-solana
+ #   role: Creator
+ #   category: Frontend Dev
+ # - title: Cortana
+ #   teaser: A talking robot. Now available on Google Play?
+ #   url: https://play.google.com/store/apps/details?id=com.microsoft.cortana
+ #   role: Core Team
+ #   category: NLP
+ # - title: Rihanna
+ #   teaser: Possibly another robot. Also available on Google Play.
+ #   url: https://play.google.com/store/music/artist/Rihanna?id=Arcw2m2ih45qntv3fufub25tyhu
+ #   role: Contributor
+  #  category: Algorithmic Composition
 
 #################
 # Site Settings #
