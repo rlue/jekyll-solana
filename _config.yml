@@ -26,11 +26,11 @@ nav_menu:
     url: https://github.com/loki-pup
     icon: /i/icons.svg#github
     outbound: true      # this key sets a link to open in a new window.
-  - name: Contact
+  - name: About
     scheme: mailto      # these keys enable email obfuscation.
     handle: hello       # you know, to protect you from bots. (handle and domain
     domain: github.com  # are separated in case bots crawl GitHub repos, too.)
-    icon: /i/info-24ppx.svg
+    icon: /i/info-24px.svg
 
 # Objects listed here will appear on the /projects.html page.
 #projects:
