@@ -7,7 +7,7 @@ author: loki-pup                        # used in a <meta> tag & /feed.xml
 description: >                              # used in a <meta> tag & /feed.xml
   A DOG LOVER'S BLOG
 slogan: i!!!                           # used in site header, beside title
-avatar: /i/bobo.jpg                       # used as portrait in site header
+avatar: /i/bobo.png                       # used as portrait in site header
 banner: /i/mountains.svg                    # used as background in site header
 url: http://loki-pup.github.io              # used by plugins to generate feed.xml and sitemap.xml
 baseurl: ''                                 # prepended to all absolute filepaths
