@@ -1,0 +1,74 @@
+---
+title: 爱奇艺爬虫
+teaser: 爬虫入门，分拆任务
+category: Python
+tags: [爬虫, 读写文件]
+---
+
+之前在做2019深圳杯的D题，要做电视广告和观众的匹配模型。那时候的一个想法是，把这些电视节目依据它们的类型来聚类，
+从而达到分类效果，再针对分类后的电视节目给它们匹配广告，从而实现匹配模型。
+虽然最后没有采用这个方法，但我也因此学了爬虫，也算有所得。
+
+## 拆解任务
+
+首先得明确任务分几步，才能找到相应的代码。
+
+*打开爱奇艺
+*输入搜索词，并点击搜索
+*点击搜索结果，提取类型的文本
+*把结果记入excel表格里
+
+## 爬虫实现
+
+### 打开网页
+
+我用的是chrome，所以要下载与chrome版本相对应的Chromedriver。
+当然也可以使用其他浏览器，下载对应的插件就好了。
+
+代码如下：
+```
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("http://www.iqiyi.com/lib/m_215411214.html?src=search")      # 用get打开网页
+```
+
+### 搜索
+
+代码如下：
+```
+from selenium.webdriver.common.keys import Keys
+from time import sleep
+
+driver.find_element_by_xpath('//*[@id="j-header"]/div[5]/div/form/div/span[1]/input').send_keys(q)    #输入搜索词q
+sleep(1)                   #防止操作过快，避免被认为是非法访问
+driver.find_element_by_xpath('//*[@id="j-header"]/div[5]/div/form/div/span[2]/input').send_keys(Keys.ENTER)  #点击搜索
+driver.switch_to_window(driver.window_handles[1])      #切换界面，从原页面切换到搜索结果的界面
+```
+这里通过xpath来定位元素。要获取元素的xpath，只需右键，点击检查，依照下图找到该图标，点击，再去原页面上点击需要的元素。
+当元素被选中后，在右边Element下面变蓝的框里右键，选择Copy->Copy Xpath，就可以了。
+
+<img src="https://raw.githubusercontent.com/loki-pup/lokiphoto/master/1.png" width="100%" height="100%" />
+
+**遇到的问题：若直接在爱奇艺首页进行搜索，不知道为什么向搜索键send keys是没有反应的。因此这里是打开爱奇艺的随便一个页面，再进行搜索**
+
+### 获取内容
+```
+import requests
+from lxml import etree
+
+driver.find_element_by_xpath('/html/body/div[1]/div[3]/div[1]/div/div[3]/div/ul/li[1]/div/h3/a').send_keys(Keys.ENTER)
+driver.switch_to_window(driver.window_handles[2])
+html = requests.get(driver.current_url)         #获取该网址的html
+driver.quit()                                   #关闭网站
+etree_html = etree.HTML(k.text)                 #k即html
+content = etree_html.xpath('//*[@id="block-B"]/div/div/div[2]/div[2]/div[2]/div[3]/p[1]/a/text()')   #获取内容
+```
+获取内容要在Xpath后面<mark>加/text()<mark>才能获得
+
+选择元素时要注意，选的是类型下面的所有文字，而不是其中一个类型。
+
+例：//*[@id="block-B"]/div/div/div[2]/div[2]/div[2]/div[3]/p[1]/a[1]，这里对应的只是古装，而不是古装 / 偶像 / 青春,
+所以重点是<mark>把a[1]改成a<mark>，就能获取所有的类型。
+
+<img src="https://raw.githubusercontent.com/loki-pup/lokiphoto/master/2.png" width="100%" height="100%" />
