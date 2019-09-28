@@ -1,0 +1,220 @@
+---
+title: 利用MATLAB实现遗传算法
+teaser: 遗传算法的MATLAB实现
+category: MATLAB
+tags: [遗传算法, 智能算法]
+---
+
+## 遗传算法执行过程的基本步骤：
+* 初始化，确定种群规模，构造染色体。 染色体可以以浮点数或二进制进行构造，即假设求函数最小值，即染色体由函数自变量构成。
+* 选择评估函数，计算每个染色体的适应值，确定Best。
+* 选择，采用轮盘赌选择算法。
+* 交配，确定交配概率，通过生成随机数确定交配对象和交配位。
+* 变异，确定变异概率，通过生成随机数确定变异基因。
+* 重新评价染色体适应值，确定Best。
+* 如果满足算法终止条件，则输出找到的最优解并退出程序，否则返回步骤（3）继续执行。
+
+此处代码是针对${1} \over {1+|x1|+|x2|+|x3|+|x4|}$所写的，公式可自由替换。
+
+## 评价染色体适应值
+```
+function [z] = concr(x)
+a = x(1);
+b = x(2);
+c = x(3);
+d = x(4);
+z = 1/(1+abs(a)+abs(b)+abs(c)+abs(d));
+end
+```
+
+## 用轮盘赌选择交配的染色体
+```
+function [y2] = select(y1)
+su = sum(y1);
+C = ones(1,5);
+for  j = 1:5
+    C(j) = y1(j)/su;
+end
+D = cumsum(C);
+E = rand(1,5);
+y2 = ones(1,5);
+for j = 1:5
+   for k = 1:4
+        if E(j)<=D(1)
+            y2(j) = 1;
+        elseif E(j)<=D(k+1) && E(j)>=D(k)
+            y2(j) = k+1;
+        end
+   end
+end
+end
+```
+
+## 染色体交叉
+```
+function [F] = mate(F)
+P = rand(1,5);
+q = find(P>0.88);
+p = length(q);
+if p == 2 || p == 3
+    c1 = F(q(1),:);
+    c2 = F(q(2),:);
+    y1 = cross(c1,c2);
+    F(q(1),:) = y1(:,1:4);
+    F(q(2),:) = y1(:,5:8);
+elseif p == 4 || p ==5
+    c1 = F(q(1),:);
+    c2 = F(q(2),:);
+    y1 = cross(c1,c2);
+    F(q(1),:) = y1(:,1:4);
+    F(q(2),:) = y1(:,5:8);
+    c3 = F(q(3),:);
+    c4 = F(q(4),:);
+    y2 = cross(c3,c4);
+    F(q(3),:) = y2(:,1:4);
+    F(q(4),:) = y2(:,5:8);
+end
+end
+
+function y = cross(varargin)
+c1 = varargin{1};
+c2 = varargin{2};
+a = randperm(3);
+i = a(1);
+b = c1;
+switch i
+    case{1}
+        c1(:,2:4) = c2(:,2:4);
+        c2(:,2:4) = b(:,2:4);
+    case{2}
+        c1(:,3:4) = c2(:,3:4);
+        c2(:,3:4) = b(:,3:4);
+    case{3}
+        c1(4) = c2(4);
+        c2(4) = b(4);
+end
+y = [c1,c2];
+end
+```
+
+## 染色体变异
+```
+function [f] = mutate(f)
+a = rand(5,4);
+[m,n] = find(a<0.1);
+b = length(m);
+for i = 1:b
+    f(m(i),n(i)) = randn(1);
+end
+```
+
+## 完整代码
+```
+function [ ] = produce( z )
+%UNTITLED 此处显示有关此函数的摘要
+%   此处显示详细说明
+A = randn(5,4);            %    随机生成五个染色体
+B = ones(1,5);
+G = ones(1,z);               %   可自行控制迭代次数
+for j = 1:z
+for  i = 1:5
+    B(i) = concr(A(i,:));      %   评价染色体适应值
+end
+G(j) = max(B);
+num = select(B);             %   用旋轮法选择染色体
+F = ones(5,4);
+for i = 1:5
+    F(i,:) = A(num(i),:);
+end
+F = mate(F);                  %   染色体交叉
+F = mutate(F);                %   染色体变异
+A = F;
+end
+G
+g = 1:1:z;
+plot(g,G)                     %   绘出最优值与代数的图
+end
+ 
+function [y2] = select(y1)
+su = sum(y1);
+C = ones(1,5);
+for  j = 1:5
+    C(j) = y1(j)/su;
+end
+D = cumsum(C);
+E = rand(1,5);
+y2 = ones(1,5);
+for j = 1:5
+   for k = 1:4
+        if E(j)<=D(1)
+            y2(j) = 1;
+        elseif E(j)<=D(k+1) && E(j)>=D(k)
+            y2(j) = k+1;
+        end
+   end
+end
+end
+ 
+ 
+ 
+function [z] = concr(x)
+a = x(1);
+b = x(2);
+c = x(3);
+d = x(4);
+z = 1/(1+abs(a)+abs(b)+abs(c)+abs(d));
+end
+ 
+function [F] = mate(F)
+P = rand(1,5);
+q = find(P>0.88);
+p = length(q);
+if p == 2 || p == 3
+    c1 = F(q(1),:);
+    c2 = F(q(2),:);
+    y1 = cross(c1,c2);
+    F(q(1),:) = y1(:,1:4);
+    F(q(2),:) = y1(:,5:8);
+elseif p == 4 || p ==5
+    c1 = F(q(1),:);
+    c2 = F(q(2),:);
+    y1 = cross(c1,c2);
+    F(q(1),:) = y1(:,1:4);
+    F(q(2),:) = y1(:,5:8);
+    c3 = F(q(3),:);
+    c4 = F(q(4),:);
+    y2 = cross(c3,c4);
+    F(q(3),:) = y2(:,1:4);
+    F(q(4),:) = y2(:,5:8);
+end
+end
+ 
+function y = cross(varargin)
+c1 = varargin{1};
+c2 = varargin{2};
+a = randperm(3);
+i = a(1);
+b = c1;
+switch i
+    case{1}
+        c1(:,2:4) = c2(:,2:4);
+        c2(:,2:4) = b(:,2:4);
+    case{2}
+        c1(:,3:4) = c2(:,3:4);
+        c2(:,3:4) = b(:,3:4);
+    case{3}
+        c1(4) = c2(4);
+        c2(4) = b(4);
+end
+y = [c1,c2];
+end
+ 
+function [f] = mutate(f)
+a = rand(5,4);
+[m,n] = find(a<0.1);
+b = length(m);
+for i = 1:b
+    f(m(i),n(i)) = randn(1);
+end
+end
+```
