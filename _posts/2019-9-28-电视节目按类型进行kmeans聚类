@@ -4,3 +4,15 @@ teaser: 利用kmeans聚类对电视节目分类
 category: Python
 tags: [kmeans聚类, 画图]
 ---
+
+在用爬虫爬取了电视节目的类型信息后，要对这些节目依据它们的类型进行kmeans聚类。
+
+## 拆解任务
+
+
+
+改用余弦相似度实现kmeans的代码来自：
+https://www.v2ex.com/t/561465
+
+
+
