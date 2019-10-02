@@ -30,7 +30,7 @@
 
 @mixin fontface($face: $default_font_face) {
   @if $face == sans-serif { font-family: "Roboto", sans-serif; }
-  @else if $face == serif { font-family: "Roboto Slab", Georgia, serif }
+  @else if $face == serif { font-family: "Alegreya", Georgia, serif }
   @else if $face == monospace { font-family: "Roboto Mono", monospace; }
 }
 
