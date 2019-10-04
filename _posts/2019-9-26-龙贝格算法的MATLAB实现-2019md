@@ -1,0 +1,67 @@
+---
+title: 龙贝格算法的MATLAB实现
+teaser: 龙贝格算法的应用
+category: MATLAB
+tags: [龙贝格算法]
+---
+
+## 题目
+我国第一颗人造地球卫星近地点距离为h=439km，远地点距离为H=2384km，地球半径为6371km，求卫星轨道周长。
+a=(2R+H+h)/2=7782.5，c=(H-h)/2=972.5。
+
+利用龙贝格算法和椭圆周长公式，逼近卫星轨道周长。
+
+龙贝格算法：<https://baike.baidu.com/item/%E9%BE%99%E8%B4%9D%E6%A0%BC%E6%B1%82%E7%A7%AF%E5%85%AC%E5%BC%8F/3882832?fr=aladdin>
+
+椭圆周长公式：
+<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{150}&space;\tiny&space;S&space;=&space;4a\int_{0}^{\frac{\pi&space;}{2}}\sqrt{1-(\frac{c}{a})^{2}sin^{2}\Theta&space;}d\Theta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}&space;\tiny&space;S&space;=&space;4a\int_{0}^{\frac{\pi&space;}{2}}\sqrt{1-(\frac{c}{a})^{2}sin^{2}\Theta&space;}d\Theta" title="\tiny S = 4a\int_{0}^{\frac{\pi }{2}}\sqrt{1-(\frac{c}{a})^{2}sin^{2}\Theta }d\Theta" /></a>
+
+## 代码实现
+```
+function [ z ] = roberg( n )
+%UNTITLED2 此处显示有关此函数的摘要
+%   此处显示详细说明
+a = 7782.5;
+c = 972.5;
+syms f
+t = zeros(1,n);
+t(1)=pi/4*(4*a+4*a*sqrt(1-(c/a)^2));
+for j = 1:(n-1)
+    e = 4*a*sqrt(1-(c/a)^2*(sin((2*f-1)*pi/2^(j+1)))^2);
+    d  =symsum(e,f,1,2^(j-1));
+    t(j+1) = 0.5*t(j) + pi/2/2^(j)*d;
+end
+s = zeros(1,n-1);
+for i = 1:(n-1)
+    s(i) = (4*t(i+1) - t(i))/3;
+end
+g = zeros(1,n-2);
+for i = 1:n-2
+    g(i) = (16*s(i+1)-s(i))/15;
+end
+r = zeros(1,n-3);
+for i =1:n-3
+    r(i) = (4^3*g(i+1)-g(i))/(4^3-1);
+end
+z = zeros(n,4);
+z(1:n,1) = t';
+z(2:n,2) = s';
+z(3:n,3) = g';
+z(4:n,4) = r';
+end
+```
+
+## 计算结果
+```
+>> roberg(5)
+
+ans =
+
+   1.0e+04 *
+
+    4.8707         0         0         0
+    4.8707    4.8708         0         0
+    4.8707    4.8707    4.8707         0
+    4.8707    4.8707    4.8707    4.8707
+    4.8707    4.8707    4.8707    4.8707
+```
