@@ -231,3 +231,102 @@ for i in range(n):
     qxy = qxy + np.square(pr[0][i] - ps[0][i])                        #计算spearman
 qxy = 1 - 6/n/(np.square(n)-1)*qxy 
 ```
+
+# 计算Spearman矩阵
+
+array形式
+```
+##数组形式
+fb = r'C:\Users\LENOVO\Documents\Tencent Files\973391860\FileRecv\eg1d10data.xls'
+da2 = pd.read_excel(fb,header = None)
+da3 = da2.values
+row = da2.shape[0]
+col = da2.shape[1]
+q = np.ones((col,col))
+
+
+for i in range(col):
+    for j in range(col):
+        sa1 = np.sort(da3[:,i])
+        sa2 = np.sort(da3[:,j])
+        sb1 = da3[:,i]
+        sb2 = da3[:,j]
+        pr = np.ones((1,row))
+        ps = np.ones((1,row))
+        for k in range(row):
+            [c]=np.where(sa1==sb1[k])
+            [d] = np.where(sa2==sb2[k])
+            pr[0][k] = c[0]
+            ps[0][k] = d[0]
+        findrank(sa1,pr)  
+        findrank(sa2,ps)
+        
+        qxy = 0
+        for p in range(row):
+            qxy = qxy + np.square(pr[0][p] - ps[0][p])                        #计算spearman
+        q[i][j] = 1 - 6/row/(np.square(row)-1)*qxy 
+
+def findrank(x1,z):    
+    repeat =[item for item, count in Counter(x1).items() if count > 1]       # 找重复元素
+    rcount = [count for item, count in Counter(x1).items() if count > 1]     #找重复次数
+    nr = len(repeat)      
+    for j in range(nr):                          #处理重复元素的秩统计量
+        [a] = np.where(x1==repeat[j])
+        m = rcount[j]
+        b = sum(a)/m
+        for k in range(m):
+            [d,c] = np.where(z==a[k])
+            z[0][c] = b
+
+print(q)        
+```
+
+list形式
+```
+fb = r'C:\Users\LENOVO\Documents\Tencent Files\973391860\FileRecv\eg1d10data.xls'
+da2 = pd.read_excel(fb,header = None)
+da3 = da2.values
+row = da2.shape[0]
+col = da2.shape[1]
+
+def findrank(x1,z):    
+    repeat =[item for item, count in Counter(x1).items() if count > 1]       # 找重复元素
+    rcount = [count for item, count in Counter(x1).items() if count > 1]     #找重复次数
+    nr = len(repeat)      
+    for j in range(nr):
+        a = x1.index(repeat[j])
+        m = rcount[j]
+        b = (m*a+(m-1)*m/2)/m
+        [d,c] = np.where(z==a)
+        z[0][c] = b
+
+        
+def getqxy(x1,pr,y1,ps):        
+    findrank(x1,pr) 
+    findrank(y1,ps)
+    qxy = 0
+    for i in range(row):
+        qxy = qxy + np.square(pr[0][i] - ps[0][i])
+    qxy = 1 - 6/n/(np.square(row)-1)*qxy 
+    return qxy
+
+pr = np.ones((1,row))
+ps = np.ones((1,row)) 
+q = np.ones((col,col))
+for i in range(col):
+    for j in range(col):
+        sa1 = da3[:,i].tolist()
+        sa2 = da3[:,j].tolist()
+        sb1 = da3[:,i].tolist()
+        sb2 = da3[:,j].tolist()
+        sa1.sort()
+        sa2.sort()
+        for k in range(row):
+            pr[0][k] = sa1.index(sb1[k])                 #获取秩统计量
+            ps[0][k] = sa2.index(sb2[k])
+
+        q[i][j] =  getqxy(sa1,pr,sa2,ps)
+
+        
+print('my spearman:\n',q)
+```
