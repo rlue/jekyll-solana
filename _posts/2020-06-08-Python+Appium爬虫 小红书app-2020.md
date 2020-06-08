@@ -7,6 +7,9 @@ tags: [Appium, 爬虫]
 
 最近在学习怎么爬手机app，弄了两三天才入了门，其中遇到了很多问题，在这里记录一下。先后用了小红书和闲鱼来测试。
 
+主要参考了两个博主的文章。[使用Appium爬取淘宝App数据](https://juejin.im/post/5c99a4ee518825079c3a7d34)和
+[Python网络爬虫——Appuim+夜神模拟器爬取得到APP课程数据](https://www.jianshu.com/p/5455d9f67643)。这里的代码是基于第一篇文章里面的代码修改得到的。
+
 tips:
 
 用的是最新版本的appium，android sdk，java，手机是安卓7.0.
@@ -46,14 +49,13 @@ UnicodeEncodeError: 'UCS-2' codec can't encode characters in position 11-11。�
 
 ### 配置环境
 
-先下载java，android sdk和appium，并配置环境。具体安装过程可以看这个博主写的，https://www.cnblogs.com/peipei-Study/p/12092054.html。安装后记得
+先下载java，android sdk和appium，并配置环境。具体安装过程可以看这个博主写的，[Appium下载安装及环境配置](https://www.cnblogs.com/peipei-Study/p/12092054.html)。安装后记得
 测试一下是否配置成功。python的话，还要安装Appium-Python-Client。
 
 
 ### 前期准备
 
-1. 直接usb连接手机，记得进入开发者模式。然后cmd运行adb devices，会返回List of devices attached和*****  device。******就是设备名称，之后在appium
-会用到，deviceName。
+1. 直接usb连接手机，记得进入开发者模式。然后cmd运行adb devices，会返回List of devices attached和.....  device。....就是设备名称，之后在appium会用到，deviceName。
 
 2. 在手机打开准备爬虫的app，然后cmd运行
 
@@ -113,8 +115,6 @@ DRIVER_SERVER = 'http://localhost:4723/wd/hub'
 
 class AppiumDemo(object):
     def __init__(self):
-        #self.driver = webdriver.Remote(command_executor=desired_capabilities['command_executor'],
-                                       #desired_capabilities=desired_capabilities)
         self.driver = webdriver.Remote(DRIVER_SERVER, desired_capabilities=desired_capabilities)                               
         self.by = mobileby.MobileBy()
         
