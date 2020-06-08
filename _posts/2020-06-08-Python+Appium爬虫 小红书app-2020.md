@@ -24,7 +24,7 @@ from null (pid=13019, uid=2000) not exported from uid，这个大概是因为手
 adb shell
 monkey -p com.xingin.xhs -v -v -v 1
 ```
-，其中com.xingin.xhs是appPackage。
+，其中com.xingin.xhs是appPackage。返回结果会是十几行数据，找到cmp=.... in package com.xingin.xhs，....就是启动页的appActivity。除此，还有两种别的方法，具体可看[appium如何获取到APP的启动activity](https://www.cnblogs.com/handaxing/p/6952491.html)。
 
 3. 尝试appium连接，报错无法安装appium-uiautomator2-server-debug-androidTest.apk'' exited with code 1，可以尝试卸载重装app。
 
