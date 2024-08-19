@@ -449,11 +449,21 @@
     position: relative;
     padding: 1rem;
     background-color: #fff;
-    border: 1px solid #4e3107;
-    border-right-width: 1.5rem;
+    border-radius: 0.4rem;
     @include fontface(serif);
     color: #444;
     text-align: right;
+
+    &:before { // via https://css-tricks.com/gradient-borders-in-css/
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -1px; // !important
+      margin-right: -1.5rem; // !important
+      border-radius: inherit; // !important
+      background: linear-gradient(135deg, #d53a9d 15%, #58357a);
+    }
   }
 }
 
